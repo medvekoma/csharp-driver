@@ -63,12 +63,14 @@
     <Compile Include="CqlQueryExtensions.cs" />
     <Compile Include="CqlQuerySingleElement.cs" />
     <Compile Include="CqlQueryTools.cs" />
+    <Compile Include="CqlQueryWithSelect.cs" />
     <Compile Include="CqlScalar.cs" />
     <Compile Include="CqlStringTool.cs" />
     <Compile Include="CqlToken.cs" />
     <Compile Include="CqlUpdate.cs" />
     <Compile Include="EntityTrackingMode.cs" />
     <Compile Include="EntityUpdateMode.cs" />
+    <Compile Include="ICassandraQueryProvider.cs" />
     <Compile Include="ITable.cs" />
     <Compile Include="ParsePhase.cs" />
     <Compile Include="PartitionKeyAttribute.cs" />

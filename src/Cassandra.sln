@@ -8,10 +8,22 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cassandra", "Cassandra\Cassandra.csproj", "{6E8C45DA-D958-4C75-98C3-B54C883299A2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cassandra.Data", "Cassandra.Data\Cassandra.Data.csproj", "{EE00CE02-F1E6-4F7D-B43C-F6FADCE4C72B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6E8C45DA-D958-4C75-98C3-B54C883299A2} = {6E8C45DA-D958-4C75-98C3-B54C883299A2}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cassandra.Data.Linq", "Cassandra.Data.Linq\Cassandra.Data.Linq.csproj", "{7FD62B8B-365D-48D6-8C21-2EF215294F64}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6E8C45DA-D958-4C75-98C3-B54C883299A2} = {6E8C45DA-D958-4C75-98C3-B54C883299A2}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cassandra.IntegrationTests", "Cassandra.IntegrationTests\Cassandra.IntegrationTests.csproj", "{D584651E-23C0-4714-9B92-6113C44BA6B8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EE00CE02-F1E6-4F7D-B43C-F6FADCE4C72B} = {EE00CE02-F1E6-4F7D-B43C-F6FADCE4C72B}
+		{49996688-1380-4854-A32C-048C4014E478} = {49996688-1380-4854-A32C-048C4014E478}
+		{7FD62B8B-365D-48D6-8C21-2EF215294F64} = {7FD62B8B-365D-48D6-8C21-2EF215294F64}
+		{6E8C45DA-D958-4C75-98C3-B54C883299A2} = {6E8C45DA-D958-4C75-98C3-B54C883299A2}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{9A8259D4-6FAD-46F5-9141-7DC169927821}"
 	ProjectSection(SolutionItems) = preProject
@@ -20,6 +32,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{9A8259D4
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cassandra.DSE", "Cassandra.DSE\Cassandra.DSE.csproj", "{63B858E0-A7A8-4849-9069-58CE6A18771B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6E8C45DA-D958-4C75-98C3-B54C883299A2} = {6E8C45DA-D958-4C75-98C3-B54C883299A2}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{C29E0F5F-FC0E-466B-A2B7-30756AF22956}"
 	ProjectSection(SolutionItems) = preProject
@@ -29,6 +44,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{C29E0F
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cassandra.Tests", "Cassandra.Tests\Cassandra.Tests.csproj", "{49996688-1380-4854-A32C-048C4014E478}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EE00CE02-F1E6-4F7D-B43C-F6FADCE4C72B} = {EE00CE02-F1E6-4F7D-B43C-F6FADCE4C72B}
+		{7FD62B8B-365D-48D6-8C21-2EF215294F64} = {7FD62B8B-365D-48D6-8C21-2EF215294F64}
+		{6E8C45DA-D958-4C75-98C3-B54C883299A2} = {6E8C45DA-D958-4C75-98C3-B54C883299A2}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

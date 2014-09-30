@@ -46,9 +46,10 @@ namespace Cassandra.Data.Linq
         /// To execute this CqlQuery use <c>Execute()</c> method.</returns>
         public static CqlQuery<TResult> Select<TSource, TResult>(this CqlQuery<TSource> source, Expression<Func<TSource, TResult>> selector)
         {
-            var ret = (CqlQuery<TResult>) source.Provider.CreateQuery<TResult>(Expression.Call(
+            var expression = Expression.Call(
                 null, CqlMthHelps.SelectMi,
-                new[] {source.Expression, selector}));
+                new[] {source.Expression, selector});
+            var ret = new CqlQueryWithSelect<TSource, TResult>(expression, source.Provider, selector);
             source.CopyQueryPropertiesTo(ret);
             return ret;
         }

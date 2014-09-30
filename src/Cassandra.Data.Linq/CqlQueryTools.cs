@@ -587,25 +587,7 @@ namespace Cassandra.Data.Linq
         public static T GetRowFromCqlRow<T>(Row cqlRow, Dictionary<string, int> colToIdx, Dictionary<string, Tuple<string, object, int>> mappings,
                                             Dictionary<string, string> alter)
         {
-	        // If there is only one constructor, and its parameter count matches the number of columns, use that one.
-			var constructorInfos = typeof(T).GetConstructors();
-	        if (constructorInfos.Length == 1)
-	        {
-		        var constructorInfo = constructorInfos[0];
-		        var parameterInfos = constructorInfo.GetParameters();
-		        if (parameterInfos.Length == cqlRow.Length)
-		        {
-					var parameters = new object[cqlRow.Length];
-			        for(int i = 0; i < cqlRow.Length; i++)
-			        {
-				        var parameterType = parameterInfos[i].ParameterType;
-				        parameters[i] = cqlRow.GetValue(parameterType, i);
-			        }
-			        return (T)constructorInfo.Invoke(parameters);
-		        }
-	        }
-
-	        ConstructorInfo ncstr = typeof (T).GetConstructor(new Type[] {});
+            ConstructorInfo ncstr = typeof (T).GetConstructor(new Type[] {});
             if (ncstr != null)
             {
                 var row = (T) ncstr.Invoke(new object[] {});
@@ -682,22 +664,25 @@ namespace Cassandra.Data.Linq
                     }
                     else
                     {
-                        var objs = new object[mappings.Count];
+                        var objs = cqlRow.ToArray();
                         MemberInfo[] props = typeof (T).GetMembers();
                         int idx = 0;
                         foreach (MemberInfo prop in props)
                         {
                             if (prop is PropertyInfo || prop is FieldInfo)
                             {
-                                if (mappings[prop.Name].Item1 == null)
+                                if (mappings.ContainsKey(prop.Name))
                                 {
-                                    objs[mappings[prop.Name].Item3] = mappings[prop.Name].Item2;
-                                }
-                                else
-                                {
-                                    object val = cqlRow.GetValue(prop.GetTypeFromPropertyOrField(), idx);
-                                    objs[mappings[prop.Name].Item3] = val;
-                                    idx++;
+                                    if (mappings[prop.Name].Item1 == null)
+                                    {
+                                        objs[mappings[prop.Name].Item3] = mappings[prop.Name].Item2;
+                                    }
+                                    else
+                                    {
+                                        object val = cqlRow.GetValue(prop.GetTypeFromPropertyOrField(), idx);
+                                        objs[mappings[prop.Name].Item3] = val;
+                                        idx++;
+                                    }
                                 }
                             }
                         }

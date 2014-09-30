@@ -89,6 +89,7 @@
     <Compile Include="Core\TimeUuidSerializationTests.cs" />
     <Compile Include="Core\TupleTests.cs" />
     <Compile Include="Core\UdtMappingsTests.cs" />
+    <Compile Include="CqlQueryWithSelectTests.cs" />
     <Compile Include="Data\AdoBasicTests.cs" />
     <Compile Include="InfrastructureTests.cs" />
     <Compile Include="Linq\LinqMappingTests.cs" />

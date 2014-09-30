@@ -101,7 +101,7 @@ namespace Cassandra.Data.Linq
             return adaptation;
         }
 
-        internal IEnumerable<TEntity> AdaptRows(IEnumerable<Row> rows, Dictionary<string, int> colToIdx, CqlExpressionVisitor visitor)
+        internal virtual IEnumerable<TEntity> AdaptRows(IEnumerable<Row> rows, Dictionary<string, int> colToIdx, CqlExpressionVisitor visitor)
         {
             foreach (Row row in rows)
             {
